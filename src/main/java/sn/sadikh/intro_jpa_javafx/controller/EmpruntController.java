@@ -15,6 +15,7 @@ import sn.sadikh.intro_jpa_javafx.Model.Livre;
 import sn.sadikh.intro_jpa_javafx.service.EmpruntService;
 import sn.sadikh.intro_jpa_javafx.service.EtudiantService;
 import sn.sadikh.intro_jpa_javafx.service.LivreService;
+import sn.sadikh.intro_jpa_javafx.service.PdfService;
 
 import java.time.LocalDate;
 
@@ -22,6 +23,7 @@ public class EmpruntController {
     private EmpruntService empruntService = new EmpruntService(new EmpruntDAO());
     private EtudiantService etudiantService = new EtudiantService(new EtudiantDAO());
     private LivreService livreService = new LivreService(new LivreDAO());
+    private PdfService pdfService = new PdfService();
 
     @FXML private ComboBox<Etudiant> cbEtudiant;
     @FXML private ComboBox<Livre> cbLivre;
@@ -69,7 +71,17 @@ public class EmpruntController {
         e.setDateRetourPrevue(dpRetour.getValue());
 
         String res = empruntService.ajouter(e);
-        lblStatus.setText(res);
+        if (res.contains("Succès")) {
+            // GÉNÉRATION DU PDF ICI
+            String cheminPdf = pdfService.genererFicheEmprunt(e);
+
+            if (cheminPdf != null) {
+                lblStatus.setText("Succès ! Emprunt enregistré et PDF généré.");
+                // Étape suivante : EmailService.envoyer(e, cheminPdf);
+            }
+        } else {
+            lblStatus.setText(res);
+        }
 
         chargerDonnees();
         annuler();
