@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sn.sadikh.intro_jpa_javafx.controller.LivreController">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="245.0" style="-fx-background-color: green;">
+         <children>
+            <Label layoutX="22.0" layoutY="48.0" text="ISBN" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtIsbn" layoutX="73.0" layoutY="40.0" prefHeight="37.0" prefWidth="149.0" />
+             <Label layoutX="22.0" layoutY="150.0" text="Titre" textFill="WHITE">
+                 <font>
+                     <Font size="15.0" />
+                 </font>
+             </Label>
+             <TextField fx:id="txtTitre" layoutX="73.0" layoutY="142.0" prefHeight="37.0" prefWidth="149.0" />
+             <Label layoutX="22.0" layoutY="260.0" text="Auteur" textFill="WHITE">
+                 <font>
+                     <Font size="15.0" />
+                 </font>
+             </Label>
+             <TextField fx:id="txtAuteur" layoutX="73.0" layoutY="252.0" prefHeight="37.0" prefWidth="149.0" />
+            <Button onAction="#enregistrer" layoutX="52.0" layoutY="339.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="142.0" text="Enregistrer" />
+         </children>
+      </Pane>
+      <TableView fx:id="table" layoutX="246.0" prefHeight="400.0" prefWidth="354.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="colTitre" prefWidth="75.0" text="Titre" />
+            <TableColumn fx:id="colIsbn" prefWidth="105.20001220703125" text="ISBN" />
+            <TableColumn fx:id="colAuteur" prefWidth="98.0" text="Auteur" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

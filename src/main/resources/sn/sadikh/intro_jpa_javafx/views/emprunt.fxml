@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="472.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sn.sadikh.intro_jpa_javafx.controller.EmpruntController">
+    <children>
+        <Pane prefHeight="474.0" prefWidth="299.0" style="-fx-background-color: black;">
+            <children>
+                <Label layoutX="23.0" layoutY="65.0" text="Etudiant" textFill="WHITE">
+                    <font><Font size="16.0" /></font>
+                </Label>
+                <ComboBox fx:id="cbEtudiant" layoutX="105.0" layoutY="61.0" prefHeight="33.0" prefWidth="170.0" />
+
+                <Label layoutX="23.0" layoutY="134.0" text="Livre" textFill="WHITE">
+                    <font><Font size="16.0" /></font>
+                </Label>
+                <ComboBox fx:id="cbLivre" layoutX="105.0" layoutY="132.0" prefHeight="33.0" prefWidth="170.0" />
+
+                <Label layoutX="23.0" layoutY="214.0" text="Retour" textFill="WHITE">
+                    <font><Font size="16.0" /></font>
+                </Label>
+                <DatePicker fx:id="dpRetour" layoutX="105.0" layoutY="212.0" prefHeight="33.0" prefWidth="170.0" />
+
+                <Button layoutX="41.0" layoutY="346.0" mnemonicParsing="false" onAction="#enregistrer" text="Enregistrer" />
+                <Button layoutX="170.0" layoutY="346.0" mnemonicParsing="false" onAction="#annuler" text="Annuler" />
+
+                <Label fx:id="lblStatus" layoutX="23.0" layoutY="400.0" text="..." textFill="YELLOW" />
+            </children>
+        </Pane>
+        <TableView fx:id="table" layoutX="299.0" prefHeight="472.0" prefWidth="431.0">
+            <columns>
+                <TableColumn fx:id="colId" prefWidth="45.0" text="Id" />
+                <TableColumn fx:id="colEtudiant" prefWidth="110.0" text="Etudiant" />
+                <TableColumn fx:id="colLivre" prefWidth="110.0" text="Livre" />
+                <TableColumn fx:id="colDateEmprunt" prefWidth="85.0" text="Date Emp." />
+                <TableColumn fx:id="colDateRetour" prefWidth="80.0" text="Retour" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

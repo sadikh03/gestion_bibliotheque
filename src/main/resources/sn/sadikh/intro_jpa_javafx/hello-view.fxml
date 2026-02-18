@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sn.sadikh.intro_jpa_javafx.HelloController">
+   <top>
+      <Pane prefHeight="63.0" prefWidth="600.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER">
+         <children>
+             <MenuBar layoutX="264.0" layoutY="19.0">
+                 <menus>
+                     <Menu mnemonicParsing="false" text="Gestion">
+                         <items>
+                             <MenuItem onAction="#afficherFormEtudiant" text="Etudiants" />
+                             <MenuItem onAction="#afficherFormLivre" text="Livres" />
+                             <MenuItem onAction="#afficherFormEmprunt" text="Emprunts" />
+                         </items>
+                     </Menu>
+                 </menus>
+             </MenuBar>
+         </children>
+      </Pane>
+   </top>
+    <center>
+        <StackPane fx:id="stackPane" />
+    </center>
+</BorderPane>
