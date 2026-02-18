@@ -12,10 +12,7 @@ import sn.sadikh.intro_jpa_javafx.DAO.LivreDAO;
 import sn.sadikh.intro_jpa_javafx.Model.Emprunt;
 import sn.sadikh.intro_jpa_javafx.Model.Etudiant;
 import sn.sadikh.intro_jpa_javafx.Model.Livre;
-import sn.sadikh.intro_jpa_javafx.service.EmpruntService;
-import sn.sadikh.intro_jpa_javafx.service.EtudiantService;
-import sn.sadikh.intro_jpa_javafx.service.LivreService;
-import sn.sadikh.intro_jpa_javafx.service.PdfService;
+import sn.sadikh.intro_jpa_javafx.service.*;
 
 import java.time.LocalDate;
 
@@ -24,6 +21,7 @@ public class EmpruntController {
     private EtudiantService etudiantService = new EtudiantService(new EtudiantDAO());
     private LivreService livreService = new LivreService(new LivreDAO());
     private PdfService pdfService = new PdfService();
+    private EmailService emailService = new EmailService();
 
     @FXML private ComboBox<Etudiant> cbEtudiant;
     @FXML private ComboBox<Livre> cbLivre;
@@ -74,7 +72,11 @@ public class EmpruntController {
         if (res.contains("Succès")) {
             // GÉNÉRATION DU PDF ICI
             String cheminPdf = pdfService.genererFicheEmprunt(e);
-
+            // 4. Envoi de l'E-mail
+            if (cheminPdf != null) {
+                emailService.envoyerFicheEmail(e, cheminPdf);
+                lblStatus.setText("Emprunt validé, PDF généré et e-mail envoyé !");
+            }
             if (cheminPdf != null) {
                 lblStatus.setText("Succès ! Emprunt enregistré et PDF généré.");
                 // Étape suivante : EmailService.envoyer(e, cheminPdf);

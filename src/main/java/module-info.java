@@ -21,8 +21,8 @@ module sn.sadikh.intro_jpa_javafx {
 
     requires javafx.base;
     requires kernel;
-    requires java.desktop;
-    requires layout; // S'assurer que le module de base est requis
+    requires layout;
+    requires jakarta.mail; // S'assurer que le module de base est requis
 
     // Autorise Hibernate à accéder aux entités [cite: 4, 7]
     opens sn.sadikh.intro_jpa_javafx.Model to org.hibernate.orm.core, javafx.base;
